@@ -1,0 +1,254 @@
+[
+  {
+    "id": "1",
+    "name": "Margarita",
+    "description": "Tomate, mozzarella, albahaca fresca",
+    "image": "/pizzas/margherita.jpg",
+    "variants": [
+      {
+        "size": "small",
+        "slices": 4,
+        "price": 8.9
+      },
+      {
+        "size": "medium",
+        "slices": 6,
+        "price": 12.9
+      },
+      {
+        "size": "large",
+        "slices": 8,
+        "price": 16.9
+      },
+      {
+        "size": "xlarge",
+        "slices": 12,
+        "price": 21.9
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "name": "Pepperoni",
+    "description": "Pepperoni, mozzarella, salsa de tomate",
+    "image": "/pizzas/pepperoni.jpg",
+    "variants": [
+      {
+        "size": "small",
+        "slices": 4,
+        "price": 9.9
+      },
+      {
+        "size": "medium",
+        "slices": 6,
+        "price": 13.9
+      },
+      {
+        "size": "large",
+        "slices": 8,
+        "price": 17.9
+      },
+      {
+        "size": "xlarge",
+        "slices": 12,
+        "price": 22.9
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "name": "Cuatro Quesos",
+    "description": "Mozzarella, gorgonzola, parmesano, provolone",
+    "image": "/pizzas/four-cheese.jpg",
+    "variants": [
+      {
+        "size": "small",
+        "slices": 4,
+        "price": 10.9
+      },
+      {
+        "size": "medium",
+        "slices": 6,
+        "price": 14.9
+      },
+      {
+        "size": "large",
+        "slices": 8,
+        "price": 18.9
+      },
+      {
+        "size": "xlarge",
+        "slices": 12,
+        "price": 23.9
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "name": "Hawaiana",
+    "description": "Jamón, piña, mozzarella",
+    "image": "/pizzas/hawaiian.jpg",
+    "variants": [
+      {
+        "size": "small",
+        "slices": 4,
+        "price": 9.9
+      },
+      {
+        "size": "medium",
+        "slices": 6,
+        "price": 13.9
+      },
+      {
+        "size": "large",
+        "slices": 8,
+        "price": 17.9
+      },
+      {
+        "size": "xlarge",
+        "slices": 12,
+        "price": 22.9
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "name": "Vegetariana",
+    "description": "Pimientos, champiñones, cebolla, aceitunas",
+    "image": "/pizzas/vegetarian.jpg",
+    "variants": [
+      {
+        "size": "small",
+        "slices": 4,
+        "price": 9.9
+      },
+      {
+        "size": "medium",
+        "slices": 6,
+        "price": 13.9
+      },
+      {
+        "size": "large",
+        "slices": 8,
+        "price": 17.9
+      },
+      {
+        "size": "xlarge",
+        "slices": 12,
+        "price": 22.9
+      }
+    ]
+  },
+  {
+    "id": "6",
+    "name": "BBQ Chicken",
+    "description": "Pollo, salsa BBQ, cebolla, mozzarella",
+    "image": "/pizzas/bbq-chicken.jpg",
+    "variants": [
+      {
+        "size": "small",
+        "slices": 4,
+        "price": 10.9
+      },
+      {
+        "size": "medium",
+        "slices": 6,
+        "price": 14.9
+      },
+      {
+        "size": "large",
+        "slices": 8,
+        "price": 18.9
+      },
+      {
+        "size": "xlarge",
+        "slices": 12,
+        "price": 23.9
+      }
+    ]
+  },
+  {
+    "id": "7",
+    "name": "Mexicana",
+    "description": "Carne molida, jalapeños, pimientos, cebolla, frijoles",
+    "image": "/pizzas/mexican.jpg",
+    "variants": [
+      {
+        "size": "small",
+        "slices": 4,
+        "price": 10.9
+      },
+      {
+        "size": "medium",
+        "slices": 6,
+        "price": 14.9
+      },
+      {
+        "size": "large",
+        "slices": 8,
+        "price": 18.9
+      },
+      {
+        "size": "xlarge",
+        "slices": 12,
+        "price": 23.9
+      }
+    ]
+  },
+  {
+    "id": "8",
+    "name": "Meat Lovers",
+    "description": "Pepperoni, salchicha, jamón, tocino, carne molida",
+    "image": "/pizzas/meat-lovers.jpg",
+    "variants": [
+      {
+        "size": "small",
+        "slices": 4,
+        "price": 11.9
+      },
+      {
+        "size": "medium",
+        "slices": 6,
+        "price": 15.9
+      },
+      {
+        "size": "large",
+        "slices": 8,
+        "price": 19.9
+      },
+      {
+        "size": "xlarge",
+        "slices": 12,
+        "price": 24.9
+      }
+    ]
+  },
+  {
+    "id": "9",
+    "name": "Americana",
+    "description": "Pepperoni, champiñones, pimientos, cebolla, aceitunas",
+    "image": "/pizzas/american.jpg",
+    "variants": [
+      {
+        "size": "small",
+        "slices": 4,
+        "price": 10.9
+      },
+      {
+        "size": "medium",
+        "slices": 6,
+        "price": 14.9
+      },
+      {
+        "size": "large",
+        "slices": 8,
+        "price": 18.9
+      },
+      {
+        "size": "xlarge",
+        "slices": 12,
+        "price": 23.9
+      }
+    ]
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "id": "1",
+    "name": "Queso extra",
+    "price": 1.5,
+    "image": "/extras/queso.jpg"
+  },
+  {
+    "id": "2",
+    "name": "Champiñones",
+    "price": 2.0,
+    "image": "/extras/champinones.jpg"
+  },
+  {
+    "id": "3",
+    "name": "Aceitunas",
+    "price": 1.0,
+    "image": "/extras/aceitunas.jpg"
+  },
+  {
+    "id": "4",
+    "name": "Pepperoni extra",
+    "price": 2.5,
+    "image": "/extras/pepperoni.jpg"
+  },
+  {
+    "id": "5",
+    "name": "Jalapeños",
+    "price": 1.5,
+    "image": "/extras/jalapenos.jpg"
+  },
+  {
+    "id": "6",
+    "name": "Cebolla",
+    "price": 0.75,
+    "image": "/extras/cebolla.jpg"
+  },
+  {
+    "id": "7",
+    "name": "Borde crujiente",
+    "price": 1.9,
+    "image": "/extras/crispy-crust.jpg"
+  },
+  {
+    "id": "8",
+    "name": "Borde con queso",
+    "price": 2.9,
+    "image": "/extras/cheese-crust.jpg"
+  }
+]

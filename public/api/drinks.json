@@ -1,0 +1,104 @@
+[
+  {
+    "id": "1",
+    "name": "Coca Cola",
+    "variants": [
+      {
+        "size": "small",
+        "volume": "600ml",
+        "price": 3.5,
+        "image": "/drinks/coca-600ml.jpg"
+      },
+      {
+        "size": "medium",
+        "volume": "1.5L",
+        "price": 7.5,
+        "image": "/drinks/coca-1-5l.jpg"
+      },
+      {
+        "size": "large",
+        "volume": "2.5L",
+        "price": 10.5,
+        "image": "/drinks/coca-2-5l.jpg"
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "name": "Inca Kola",
+    "variants": [
+      {
+        "size": "small",
+        "volume": "600ml",
+        "price": 3.5,
+        "image": "/drinks/inca-600ml.jpg"
+      },
+      {
+        "size": "medium",
+        "volume": "1.5L",
+        "price": 7.5,
+        "image": "/drinks/inca-1-5l.jpg"
+      },
+      {
+        "size": "large",
+        "volume": "2.5L",
+        "price": 10.5,
+        "image": "/drinks/inca-2-5l.jpg"
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "name": "Sprite",
+    "variants": [
+      {
+        "size": "small",
+        "volume": "600ml",
+        "price": 3.5,
+        "image": "/drinks/sprite-600ml.jpg"
+      },
+      {
+        "size": "medium",
+        "volume": "1.5L",
+        "price": 7.5,
+        "image": "/drinks/sprite-1-5l.jpg"
+      },
+      {
+        "size": "large",
+        "volume": "2.5L",
+        "price": 10.5,
+        "image": "/drinks/sprite-2-5l.jpg"
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "name": "Agua",
+    "variants": [
+      {
+        "size": "small",
+        "volume": "600ml",
+        "price": 2.0,
+        "image": "/drinks/water-600ml.jpg"
+      },
+      {
+        "size": "medium",
+        "volume": "1.5L",
+        "price": 2.5,
+        "image": "/drinks/water-1-5l.jpg"
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "name": "Cerveza Cusqueña",
+    "variants": [
+      {
+        "size": "small",
+        "volume": "355ml",
+        "price": 5.0,
+        "image": "/drinks/beer-355ml.jpg"
+      }
+    ]
+  }
+]
