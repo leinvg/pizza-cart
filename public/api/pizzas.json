@@ -3,7 +3,7 @@
     "id": "1",
     "name": "Margarita",
     "description": "Tomate, mozzarella, albahaca fresca",
-    "image": "/pizzas/margherita.jpg",
+    "image": "/img/pizzas/margherita.jpg",
     "variants": [
       {
         "size": "small",
@@ -31,7 +31,7 @@
     "id": "2",
     "name": "Pepperoni",
     "description": "Pepperoni, mozzarella, salsa de tomate",
-    "image": "/pizzas/pepperoni.jpg",
+    "image": "/img/pizzas/pepperoni.jpg",
     "variants": [
       {
         "size": "small",
@@ -59,7 +59,7 @@
     "id": "3",
     "name": "Cuatro Quesos",
     "description": "Mozzarella, gorgonzola, parmesano, provolone",
-    "image": "/pizzas/four-cheese.jpg",
+    "image": "/img/pizzas/four-cheese.jpg",
     "variants": [
       {
         "size": "small",
@@ -87,7 +87,7 @@
     "id": "4",
     "name": "Hawaiana",
     "description": "Jamón, piña, mozzarella",
-    "image": "/pizzas/hawaiian.jpg",
+    "image": "/img/pizzas/hawaiian.jpg",
     "variants": [
       {
         "size": "small",
@@ -115,7 +115,7 @@
     "id": "5",
     "name": "Vegetariana",
     "description": "Pimientos, champiñones, cebolla, aceitunas",
-    "image": "/pizzas/vegetarian.jpg",
+    "image": "/img/pizzas/vegetarian.jpg",
     "variants": [
       {
         "size": "small",
@@ -143,7 +143,7 @@
     "id": "6",
     "name": "BBQ Chicken",
     "description": "Pollo, salsa BBQ, cebolla, mozzarella",
-    "image": "/pizzas/bbq-chicken.jpg",
+    "image": "/img/pizzas/bbq-chicken.jpg",
     "variants": [
       {
         "size": "small",
@@ -171,7 +171,7 @@
     "id": "7",
     "name": "Mexicana",
     "description": "Carne molida, jalapeños, pimientos, cebolla, frijoles",
-    "image": "/pizzas/mexican.jpg",
+    "image": "/img/pizzas/mexican.jpg",
     "variants": [
       {
         "size": "small",
@@ -199,7 +199,7 @@
     "id": "8",
     "name": "Meat Lovers",
     "description": "Pepperoni, salchicha, jamón, tocino, carne molida",
-    "image": "/pizzas/meat-lovers.jpg",
+    "image": "/img/pizzas/meat-lovers.jpg",
     "variants": [
       {
         "size": "small",
@@ -227,7 +227,7 @@
     "id": "9",
     "name": "Americana",
     "description": "Pepperoni, champiñones, pimientos, cebolla, aceitunas",
-    "image": "/pizzas/american.jpg",
+    "image": "/img/pizzas/american.jpg",
     "variants": [
       {
         "size": "small",

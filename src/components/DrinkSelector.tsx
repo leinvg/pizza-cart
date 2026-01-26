@@ -9,9 +9,10 @@ import Image from "next/image";
 interface DrinkSelectorProps {
   drink: Drink;
   onClose: () => void;
+  onAdd?: () => void;
 }
 
-export function DrinkSelector({ drink, onClose }: DrinkSelectorProps) {
+export function DrinkSelector({ drink, onClose, onAdd }: DrinkSelectorProps) {
   const [selectedSize, setSelectedSize] = useState<DrinkSize | null>(null);
   const addDrink = useCartStore((state) => state.addDrink);
 
@@ -22,6 +23,7 @@ export function DrinkSelector({ drink, onClose }: DrinkSelectorProps) {
       const orderDrink = buildOrderDrink(drink, selectedSize);
       addDrink(orderDrink);
       onClose();
+      onAdd?.(); // Notificar que se agregó algo
     } catch (error) {
       console.error("Error adding drink:", error);
       alert("Error al agregar bebida");

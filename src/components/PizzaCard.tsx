@@ -16,7 +16,7 @@ export function PizzaCard({ pizza, onSelect }: PizzaCardProps) {
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
       <div className="relative h-48 w-full">
         <Image
-          src={pizza.image || "/placeholder-pizza.jpg"}
+          src={pizza.image || "/img/placeholder.jpg"}
           alt={pizza.name}
           fill
           className="object-cover"
