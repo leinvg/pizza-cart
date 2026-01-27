@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { Pizza, Drink, Promo } from "@/types";
 import { fetchAllProducts } from "@/lib/api";
 import { PizzaCard } from "@/components/PizzaCard";
@@ -9,13 +9,9 @@ import { PromoCard } from "@/components/PromoCard";
 import { DrinkSelector } from "@/components/DrinkSelector";
 import { CartSidebar } from "@/components/CartSidebar";
 import { useCartStore } from "@/store/cartStore";
-import { ShoppingBasket } from "lucide-react";
+import Header from "@/components/Header";
 
 export default function Home() {
-  // Refs para scroll
-  const promosRef = useRef<HTMLDivElement>(null);
-  const pizzasRef = useRef<HTMLDivElement>(null);
-  const drinksRef = useRef<HTMLDivElement>(null);
   const [pizzas, setPizzas] = useState<Pizza[]>([]);
   const [drinks, setDrinks] = useState<Drink[]>([]);
   const [promos, setPromos] = useState<Promo[]>([]);
@@ -72,70 +68,29 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
-      {/* Header con navegación y carrito */}
-      <div className="py-2 border-b bg-neutral-800 border-neutral-600 sticky top-0 z-10">
-        <div className="relative container flex flex-row items-center justify-between mx-auto px-4">
-          {/* Logo */}
-          <a href="/" className="flex flex-col">
-            <h1 className="text-2xl/5 font-bold text-lime-500">DELIZZA</h1>
-            <p className="text-sm/tight font-medium">
-              Las mejores pizzas. Al mejor precio.
-            </p>
-          </a>
-          {/* Navbar navegación */}
-          <nav className="flex gap-2 text-sm text-stone-300">
-            <button
-              onClick={() =>
-                promosRef.current?.scrollIntoView({ behavior: "smooth" })
-              }
-              className="py-3 px-4 font-semibold transition-colors relative rounded-lg focus:outline-none cursor-pointer hover:text-lime-400"
-            >
-              Promociones
-            </button>
-            <button
-              onClick={() =>
-                pizzasRef.current?.scrollIntoView({ behavior: "smooth" })
-              }
-              className="py-3 px-4 font-semibold transition-colors relative rounded-lg focus:outline-none cursor-pointer hover:text-lime-400"
-            >
-              Pizzas
-            </button>
-            <button
-              onClick={() =>
-                drinksRef.current?.scrollIntoView({ behavior: "smooth" })
-              }
-              className="py-3 px-4 font-semibold transition-colors relative rounded-lg focus:outline-none cursor-pointer hover:text-lime-400"
-            >
-              Bebidas
-            </button>
-          </nav>
-          {/* Cart Button */}
-          <button
-            onClick={() => setIsCartOpen(!isCartOpen)}
-            className="text-stone-300 hover:text-white py-3 px-4 font-semibold rounded-lg transition-colors flex items-center gap-2 cursor-pointer"
-          >
-            <ShoppingBasket size={24} strokeWidth={1.75} />
-            {items.length > 0 && (
-              <span className="bg-red-400 text-white text-xs font-bold rounded-full w-5 flex items-center justify-center">
-                {items.length}
-              </span>
-            )}
-          </button>
-        </div>
-      </div>
-
-      {/* Main Layout con Sidebar y secciones apiladas */}
-      <div className="flex flex-1 overflow-hidden container mx-auto px-4">
-        {/* Content */}
-        <div className="flex-1 overflow-y-auto">
-          <div className="py-8 space-y-16">
+    <div className="min-h-screen flex flex-row">
+      {/* Main column: Header + Content */}
+      <div
+        className={`flex flex-col flex-1 transition-all duration-300 ${isCartOpen ? "ml-0" : ""}`}
+        style={isCartOpen ? { marginRight: "24rem" } : { marginRight: 0 }}
+      >
+        <Header
+          items={items}
+          isCartOpen={isCartOpen}
+          setIsCartOpen={setIsCartOpen}
+        />
+        <div
+          className={`flex-1 gap-6 overflow-hidden container mx-auto w-full ${isCartOpen ? "px-[6%]" : "px-4"}`}
+        >
+          <div className="py-6 space-y-12">
+            {/* Banner carrusel TODO */}
+            <div className="bg-neutral-700 h-80 w-full rounded-xl"></div>
             {/* Promociones */}
-            <section ref={promosRef}>
-              <h2 className="text-3xl font-bold mb-6 text-gray-800">
+            <section id="promos" className="scroll-mt-20">
+              <h2 className="text-2xl font-semibold mb-6">
                 Combos Promocionales
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {promos.map((promo) => (
                   <PromoCard
                     key={promo.id}
@@ -147,10 +102,8 @@ export default function Home() {
             </section>
 
             {/* Pizzas */}
-            <section ref={pizzasRef}>
-              <h2 className="text-3xl font-bold mb-6 text-gray-800">
-                Nuestras Pizzas
-              </h2>
+            <section id="pizzas" className="scroll-mt-20">
+              <h2 className="text-3xl font-bold mb-6">Nuestras Pizzas</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {pizzas.map((pizza) => (
                   <PizzaCard
@@ -163,7 +116,7 @@ export default function Home() {
             </section>
 
             {/* Bebidas */}
-            <section ref={drinksRef}>
+            <section id="bebidas" className="scroll-mt-20">
               <h2 className="text-3xl font-bold mb-6 text-gray-800">Bebidas</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {drinks.map((drink) => (
@@ -177,19 +130,17 @@ export default function Home() {
             </section>
           </div>
         </div>
-
-        {/* Sidebar */}
-        <CartSidebar isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+        {/* Modals */}
+        {selectedDrink && (
+          <DrinkSelector
+            drink={selectedDrink}
+            onClose={() => setSelectedDrink(null)}
+            onAdd={handleDrinkAdded}
+          />
+        )}
       </div>
-
-      {/* Modals */}
-      {selectedDrink && (
-        <DrinkSelector
-          drink={selectedDrink}
-          onClose={() => setSelectedDrink(null)}
-          onAdd={handleDrinkAdded}
-        />
-      )}
+      {/* Sidebar: fixed height, right, h-screen */}
+      <CartSidebar isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </div>
   );
 }

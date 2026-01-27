@@ -9,15 +9,14 @@ interface CartSidebarProps {
 }
 
 export function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
-  const { items, removeItem, updateQuantity, getTotal, clearCart } =
-    useCartStore();
-
+  const { items, removeItem, updateQuantity, getTotal, clearCart } = useCartStore();
   const total = getTotal();
 
-  if (!isOpen) return null;
-
   return (
-    <div className="w-96 border-l shadow-xl flex flex-col h-full">
+    <div
+      className={`fixed top-0 right-0 h-screen w-96 border-l shadow-xl flex flex-col bg-white z-30 transition-transform duration-300 ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
+      style={{ willChange: 'transform' }}
+    >
       {/* Header */}
       <div className="bg-lime-500 text-white p-6 flex items-center justify-between">
         <h2 className="text-2xl font-bold">🛒 Tu Pedido</h2>
