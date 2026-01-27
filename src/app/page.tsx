@@ -69,10 +69,9 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-row">
-      {/* Main column: Header + Content */}
-      <div
-        className={`flex flex-col flex-1 transition-all duration-300 ${isCartOpen ? "ml-0" : ""}`}
-        style={isCartOpen ? { marginRight: "24rem" } : { marginRight: 0 }}
+      {/* Main Content */}
+      <main
+        className={`flex flex-col flex-1 transition-all duration-300 ${isCartOpen ? "pr-96" : ""}`}
       >
         <Header
           items={items}
@@ -138,8 +137,8 @@ export default function Home() {
             onAdd={handleDrinkAdded}
           />
         )}
-      </div>
-      {/* Sidebar: fixed height, right, h-screen */}
+      </main>
+      {/* Sidebar */}
       <CartSidebar isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </div>
   );

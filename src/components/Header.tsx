@@ -20,7 +20,7 @@ export default function Header({
   setIsCartOpen,
 }: HeaderProps) {
   return (
-    <div className="py-3 border-b bg-neutral-800 border-neutral-600 sticky top-0 z-10">
+    <div className="bg-neutral-800 border-b border-neutral-600 sticky top-0 z-10 h-15 flex items-center">
       <div
         className={`container flex flex-row items-center justify-between mx-auto ${isCartOpen ? "px-[6%]" : "px-4"}`}
       >
@@ -34,7 +34,7 @@ export default function Header({
           </p>
         </a>
         {/* Navbar */}
-        <nav className="flex items-center gap-4">
+        <nav className="flex gap-4">
           {NAV_LINKS.map((tab) => (
             <a
               key={tab.href}

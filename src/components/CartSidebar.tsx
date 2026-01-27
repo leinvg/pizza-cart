@@ -1,6 +1,7 @@
 "use client";
 
 import { useCartStore } from "@/store/cartStore";
+import { X } from "lucide-react";
 import Image from "next/image";
 
 interface CartSidebarProps {
@@ -9,27 +10,24 @@ interface CartSidebarProps {
 }
 
 export function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
-  const { items, removeItem, updateQuantity, getTotal, clearCart } = useCartStore();
+  const { items, removeItem, updateQuantity, getTotal, clearCart } =
+    useCartStore();
   const total = getTotal();
 
   return (
-    <div
-      className={`fixed top-0 right-0 h-screen w-96 border-l shadow-xl flex flex-col bg-white z-30 transition-transform duration-300 ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
-      style={{ willChange: 'transform' }}
+    <aside
+      className={`fixed top-0 right-0 h-screen w-96 border-l border-neutral-600 flex flex-col z-30 transition-transform duration-300 ${isOpen ? "translate-x-0" : "translate-x-full"}`}
     >
       {/* Header */}
-      <div className="bg-lime-500 text-white p-6 flex items-center justify-between">
-        <h2 className="text-2xl font-bold">🛒 Tu Pedido</h2>
-        <button
-          onClick={onClose}
-          className="text-white hover:text-gray-200 text-3xl"
-        >
-          ×
+      <div className="px-6 flex items-center justify-between h-15">
+        <h2 className="text-lg font-semibold">Pedido</h2>
+        <button onClick={onClose} className="cursor-pointer">
+          <X size={24} strokeWidth={1.75} />
         </button>
       </div>
 
       {/* Content */}
-      <div className="flex flex-col h-[calc(100%-80px)]">
+      <div className="flex-1 flex flex-col">
         {/* Items */}
         <div className="flex-1 overflow-y-auto p-6 space-y-4">
           {items.length === 0 ? (
@@ -176,17 +174,17 @@ export function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
 
         {/* Footer */}
         {items.length > 0 && (
-          <div className="border-t p-6 space-y-4">
-            <div className="flex items-center justify-between text-xl font-bold">
-              <span>Total:</span>
-              <span className="text-lime-600">${total.toFixed(2)}</span>
+          <div className="border-t border-neutral-600 p-6 space-y-6 sticky bottom-0">
+            <div className="flex items-center justify-between text-lg font-semibold px-1">
+              <span>Total</span>
+              <span className="text-lime-400">S/. {total.toFixed(2)}</span>
             </div>
-            <button className="w-full bg-lime-500 hover:bg-lime-600 text-white font-bold py-3 rounded-lg transition-colors">
-              Confirmar Pedido
+            <button className="w-full text-stone-950/80 bg-lime-400 hover:bg-lime-500 font-semibold py-3 rounded-lg transition-colors cursor-pointer">
+              Realizar pedido
             </button>
           </div>
         )}
       </div>
-    </div>
+    </aside>
   );
 }
