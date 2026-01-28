@@ -1,7 +1,7 @@
 "use client";
 
 import { Pizza } from "@/types";
-import Image from "next/image";
+import SafeImage from "@/components/SafeImage";
 
 interface PizzaCardProps {
   pizza: Pizza;
@@ -15,12 +15,7 @@ export function PizzaCard({ pizza, onSelect }: PizzaCardProps) {
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
       <div className="relative h-48 w-full">
-        <Image
-          src={pizza.image || "/img/placeholder.jpg"}
-          alt={pizza.name}
-          fill
-          className="object-cover"
-        />
+        <SafeImage src={pizza.image} alt={pizza.name} />
       </div>
 
       <div className="p-4">

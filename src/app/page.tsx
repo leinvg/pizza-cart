@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Pizza, Drink, Promo } from "@/types";
+import { Pizza, Drink, DrinkSize, Promo } from "@/types";
 import { fetchAllProducts } from "@/lib/api";
 import { PizzaCard } from "@/components/PizzaCard";
 import { DrinkCard } from "@/components/DrinkCard";
@@ -18,6 +18,9 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   // Modales
+  const [initialDrinkSize, setInitialDrinkSize] = useState<
+    DrinkSize | undefined
+  >(undefined);
   const [selectedDrink, setSelectedDrink] = useState<Drink | null>(null);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
@@ -48,6 +51,7 @@ export default function Home() {
 
   const handleDrinkSelect = (drink: Drink) => {
     setSelectedDrink(drink);
+    setInitialDrinkSize(drink.variants[0]?.size);
   };
 
   const handleDrinkAdded = () => {
@@ -135,6 +139,7 @@ export default function Home() {
             drink={selectedDrink}
             onClose={() => setSelectedDrink(null)}
             onAdd={handleDrinkAdded}
+            initialSize={initialDrinkSize}
           />
         )}
       </main>

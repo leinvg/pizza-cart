@@ -4,16 +4,25 @@ import { useState } from "react";
 import { Drink, DrinkSize } from "@/types";
 import { buildOrderDrink } from "@/lib/orderHelpers";
 import { useCartStore } from "@/store/cartStore";
-import Image from "next/image";
+import SafeImage from "@/components/SafeImage";
+import { X } from "lucide-react";
 
 interface DrinkSelectorProps {
   drink: Drink;
   onClose: () => void;
   onAdd?: () => void;
+  initialSize?: DrinkSize;
 }
 
-export function DrinkSelector({ drink, onClose, onAdd }: DrinkSelectorProps) {
-  const [selectedSize, setSelectedSize] = useState<DrinkSize | null>(null);
+export function DrinkSelector({
+  drink,
+  onClose,
+  onAdd,
+  initialSize,
+}: DrinkSelectorProps) {
+  const [selectedSize, setSelectedSize] = useState<DrinkSize | null>(
+    initialSize ?? null,
+  );
   const addDrink = useCartStore((state) => state.addDrink);
 
   const handleAddToCart = () => {
@@ -23,7 +32,7 @@ export function DrinkSelector({ drink, onClose, onAdd }: DrinkSelectorProps) {
       const orderDrink = buildOrderDrink(drink, selectedSize);
       addDrink(orderDrink);
       onClose();
-      onAdd?.(); // Notificar que se agregó algo
+      onAdd?.();
     } catch (error) {
       console.error("Error adding drink:", error);
       alert("Error al agregar bebida");
@@ -35,49 +44,37 @@ export function DrinkSelector({ drink, onClose, onAdd }: DrinkSelectorProps) {
     : null;
 
   return (
-    <div className="fixed inset-0 bg-black/35 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-lg shadow-xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 bg-black/45 flex items-center justify-center z-50">
+      <div className="bg-neutral-800 rounded-3xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         {/* Header */}
-        <div className="sticky top-0 bg-white border-b px-6 py-4 flex items-center justify-between">
-          <h2 className="text-2xl font-bold text-gray-800">{drink.name}</h2>
-          <button
-            onClick={onClose}
-            className="text-gray-400 hover:text-gray-600 text-2xl"
-          >
-            ×
+        <div className="sticky top-0 bg-neutral-800 border-b border-neutral-600 px-6 py-4 flex items-center justify-between">
+          <h2 className="text-base font-semibold">{drink.name}</h2>
+          <button onClick={onClose} className="text-2xl cursor-pointer">
+            <X size={20} strokeWidth={1.75} />
           </button>
         </div>
 
         {/* Content */}
-        <div className="p-6 space-y-6">
+        <div className="p-6 space-x-6 flex">
           {/* Image */}
           {selectedVariant?.image && (
-            <div className="flex justify-center">
-              <div className="relative w-48 h-48">
-                <Image
-                  src={selectedVariant.image}
-                  alt={drink.name}
-                  fill
-                  className="object-contain"
-                />
-              </div>
+            <div className="relative w-60 overflow-hidden rounded-xl shrink-0">
+              <SafeImage src={selectedVariant.image} alt={drink.name} />
             </div>
           )}
 
           {/* Size Selection */}
           <div>
-            <h3 className="text-lg font-semibold mb-3 text-gray-700">
-              Elige el tamaño
-            </h3>
+            <h3 className="text-sm font-semibold mb-3 pl-4">Elige el tamaño</h3>
             <div className="space-y-2">
               {drink.variants.map((variant) => (
                 <button
                   key={variant.size}
                   onClick={() => setSelectedSize(variant.size)}
-                  className={`w-full p-4 rounded-lg border-2 transition-all ${
+                  className={`w-full px-4 py-2 rounded-xl border-2 transition-all cursor-pointer ${
                     selectedSize === variant.size
-                      ? "border-blue-500 bg-blue-50"
-                      : "border-gray-200 hover:border-blue-300"
+                      ? "border-lime-400"
+                      : "border-neutral-800 hover:border-lime-700"
                   }`}
                 >
                   <div className="flex items-center justify-between">
@@ -85,35 +82,26 @@ export function DrinkSelector({ drink, onClose, onAdd }: DrinkSelectorProps) {
                       <div className="font-semibold capitalize">
                         {variant.size}
                       </div>
-                      <div className="text-sm text-gray-500">
-                        {variant.volume}
-                      </div>
+                      <div className="text-sm text-stone-50/70">{variant.volume}</div>
                     </div>
-                    <div className="text-lg font-bold text-blue-600">
+                    <div className="text-lg font-semibold text-lime-400">
                       ${variant.price.toFixed(2)}
                     </div>
                   </div>
                 </button>
               ))}
+              {/* Footer */}
+              <button
+                onClick={handleAddToCart}
+                disabled={!selectedSize}
+                className={`w-full mt-4 py-3 rounded-lg font-semibold transition-colors cursor-pointer text-stone-950/80 bg-lime-400 hover:bg-lime-500`}
+              >
+                {selectedSize
+                  ? `Agregar - $${selectedVariant?.price.toFixed(2)}`
+                  : "Selecciona un tamaño"}
+              </button>
             </div>
           </div>
-        </div>
-
-        {/* Footer */}
-        <div className="sticky bottom-0 bg-gray-50 border-t px-6 py-4">
-          <button
-            onClick={handleAddToCart}
-            disabled={!selectedSize}
-            className={`w-full py-3 rounded-lg font-semibold transition-colors ${
-              selectedSize
-                ? "bg-blue-500 hover:bg-blue-600 text-white"
-                : "bg-gray-300 text-gray-500 cursor-not-allowed"
-            }`}
-          >
-            {selectedSize
-              ? `Agregar - $${selectedVariant?.price.toFixed(2)}`
-              : "Selecciona un tamaño"}
-          </button>
         </div>
       </div>
     </div>

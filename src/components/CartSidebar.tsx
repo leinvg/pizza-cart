@@ -3,6 +3,7 @@
 import { useCartStore } from "@/store/cartStore";
 import { X } from "lucide-react";
 import Image from "next/image";
+import SafeImage from "@/components/SafeImage";
 
 interface CartSidebarProps {
   isOpen: boolean;
@@ -32,18 +33,15 @@ export function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
         <div className="flex-1 overflow-y-auto p-6 space-y-4">
           {items.length === 0 ? (
             <div className="text-center py-12">
-              <div className="text-gray-400 text-6xl mb-4">🍕</div>
-              <p className="text-gray-500 text-lg">Tu carrito está vacío</p>
-              <p className="text-gray-400 text-sm mt-2">
-                Agrega productos para comenzar
-              </p>
+              <p className="text-lg">Tu carrito está vacío</p>
+              <p className="text-sm mt-2">Agrega productos para comenzar</p>
             </div>
           ) : (
             <>
               {items.map((item) => (
                 <div
                   key={item.id}
-                  className="bg-gray-50 rounded-lg p-4 space-y-3"
+                  className="bg-neutral-700 rounded-2xl p-6 space-y-3"
                 >
                   {/* Pizza Item */}
                   {item.itemType === "pizza" && item.pizza && (
@@ -80,11 +78,9 @@ export function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
                   {item.itemType === "drink" && item.drink && (
                     <div className="flex gap-3">
                       <div className="relative w-16 h-16 shrink-0">
-                        <Image
+                        <SafeImage
                           src={item.drink.image}
                           alt={item.drink.name}
-                          fill
-                          className="object-contain"
                         />
                       </div>
                       <div className="flex-1">
@@ -163,7 +159,7 @@ export function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
               {items.length > 0 && (
                 <button
                   onClick={clearCart}
-                  className="w-full text-red-500 hover:text-red-700 text-sm font-medium py-2"
+                  className="w-full text-red-400 text-sm font-semibold py-2 cursor-pointer"
                 >
                   Vaciar carrito
                 </button>

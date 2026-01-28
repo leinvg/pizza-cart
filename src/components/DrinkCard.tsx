@@ -1,8 +1,7 @@
 "use client";
 
 import { Drink } from "@/types";
-import Image from "next/image";
-import { useState } from "react";
+import SafeImage from "@/components/SafeImage";
 
 interface DrinkCardProps {
   drink: Drink;
@@ -12,19 +11,11 @@ interface DrinkCardProps {
 export function DrinkCard({ drink, onSelect }: DrinkCardProps) {
   const minPrice = Math.min(...drink.variants.map((v) => v.price));
   const maxPrice = Math.max(...drink.variants.map((v) => v.price));
-  const initialImg = drink.variants[0]?.image || "/img/placeholder.jpg";
-  const [imgSrc, setImgSrc] = useState(initialImg);
 
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
       <div className="relative h-48 w-full bg-gray-800 flex items-center justify-center">
-        <Image
-          src={imgSrc}
-          alt={drink.name}
-          fill
-          className="object-cover"
-          onError={() => setImgSrc("/img/placeholder.jpg")}
-        />
+        <SafeImage src={drink.variants[0].image} alt={drink.name} />
       </div>
 
       <div className="p-4">

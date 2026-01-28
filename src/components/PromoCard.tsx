@@ -1,8 +1,7 @@
 "use client";
 
 import { Promo } from "@/types";
-import Image from "next/image";
-import { useState } from "react";
+import SafeImage from "@/components/SafeImage";
 
 interface PromoCardProps {
   promo: Promo;
@@ -10,19 +9,10 @@ interface PromoCardProps {
 }
 
 export function PromoCard({ promo, onSelect }: PromoCardProps) {
-  const initialImg = promo.image || "/img/placeholder.jpg";
-  const [imgSrc, setImgSrc] = useState(initialImg);
-
   return (
     <div className="bg-linear-to-br from-orange-50 to-yellow-50 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow border-2 border-orange-200">
       <div className="relative h-56 w-full">
-        <Image
-          src={imgSrc}
-          alt={promo.name}
-          fill
-          className="object-cover"
-          onError={() => setImgSrc("/img/placeholder.jpg")}
-        />
+        <SafeImage src={promo.image} alt={promo.name} />
         <div className="absolute top-3 right-3 bg-red-500 text-white font-bold py-1 px-3 rounded-full text-sm shadow-lg">
           OFERTA
         </div>
