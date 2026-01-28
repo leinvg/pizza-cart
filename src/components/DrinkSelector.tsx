@@ -44,63 +44,62 @@ export function DrinkSelector({
     : null;
 
   return (
-    <div className="fixed inset-0 bg-black/45 flex items-center justify-center z-50">
-      <div className="bg-neutral-800 rounded-3xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+      <div className="bg-neutral-800 rounded-4xl shadow-xl max-w-md w-full overflow-y-auto">
         {/* Header */}
-        <div className="sticky top-0 bg-neutral-800 border-b border-neutral-600 px-6 py-4 flex items-center justify-between">
-          <h2 className="text-base font-semibold">{drink.name}</h2>
-          <button onClick={onClose} className="text-2xl cursor-pointer">
-            <X size={20} strokeWidth={1.75} />
+        <div className="sticky top-0 bg-neutral-800 px-6 pt-6 flex items-center justify-between">
+          <h2 className="font-semibold">{drink.name}</h2>
+          <button
+            onClick={onClose}
+            className="cursor-pointer text-stone-400 hover:text-stone-50"
+          >
+            <X size={20} strokeWidth={2} />
           </button>
         </div>
 
         {/* Content */}
-        <div className="p-6 space-x-6 flex">
+        <div className="p-6 flex gap-6">
           {/* Image */}
           {selectedVariant?.image && (
-            <div className="relative w-60 overflow-hidden rounded-xl shrink-0">
+            <div className="relative w-40 overflow-hidden rounded-lg shrink-0">
               <SafeImage src={selectedVariant.image} alt={drink.name} />
             </div>
           )}
 
           {/* Size Selection */}
-          <div>
-            <h3 className="text-sm font-semibold mb-3 pl-4">Elige el tamaño</h3>
-            <div className="space-y-2">
-              {drink.variants.map((variant) => (
-                <button
-                  key={variant.size}
-                  onClick={() => setSelectedSize(variant.size)}
-                  className={`w-full px-4 py-2 rounded-xl border-2 transition-all cursor-pointer ${
-                    selectedSize === variant.size
-                      ? "border-lime-400"
-                      : "border-neutral-800 hover:border-lime-700"
-                  }`}
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="text-left">
-                      <div className="font-semibold capitalize">
-                        {variant.size}
-                      </div>
-                      <div className="text-sm text-stone-50/70">{variant.volume}</div>
-                    </div>
-                    <div className="text-lg font-semibold text-lime-400">
-                      ${variant.price.toFixed(2)}
-                    </div>
-                  </div>
-                </button>
-              ))}
-              {/* Footer */}
+          <div className="space-y-1">
+            {drink.variants.map((variant) => (
               <button
-                onClick={handleAddToCart}
-                disabled={!selectedSize}
-                className={`w-full mt-4 py-3 rounded-lg font-semibold transition-colors cursor-pointer text-stone-950/80 bg-lime-400 hover:bg-lime-500`}
+                key={variant.size}
+                onClick={() => setSelectedSize(variant.size)}
+                className={`w-full px-3 py-2 rounded-lg transition-all cursor-pointer ${
+                  selectedSize === variant.size
+                    ? "bg-neutral-700 border-lime-400"
+                    : "border-neutral-800 hover:bg-neutral-700/50"
+                }`}
               >
-                {selectedSize
-                  ? `Agregar - $${selectedVariant?.price.toFixed(2)}`
-                  : "Selecciona un tamaño"}
+                <div className="flex items-center justify-between">
+                  <div className="flex flex-col text-left">
+                    <span className="text-sm font-semibold capitalize">
+                      {variant.size}
+                    </span>
+                    <span className="text-xs text-stone-50/70">
+                      {variant.volume}
+                    </span>
+                  </div>
+                  <div className="text-sm font-semibold text-lime-400">
+                    $ {variant.price.toFixed(2)}
+                  </div>
+                </div>
               </button>
-            </div>
+            ))}
+            <button
+              onClick={handleAddToCart}
+              disabled={!selectedSize}
+              className={`w-full mt-5 py-3 rounded-lg text-sm font-semibold transition-colors cursor-pointer text-stone-950/80 bg-lime-400 hover:bg-lime-500`}
+            >
+              Agregar al pedido
+            </button>
           </div>
         </div>
       </div>
