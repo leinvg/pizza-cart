@@ -23,6 +23,7 @@ export function DrinkSelector({
   const [selectedSize, setSelectedSize] = useState<DrinkSize | null>(
     initialSize ?? null,
   );
+
   const addDrink = useCartStore((state) => state.addDrink);
 
   const handleAddToCart = () => {
@@ -45,13 +46,14 @@ export function DrinkSelector({
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-      <div className="bg-neutral-800 rounded-4xl shadow-xl max-w-md w-full overflow-y-auto">
+      <div className="bg-neutral-800 rounded-4xl shadow-xl max-w-md w-full">
         {/* Header */}
-        <div className="sticky top-0 bg-neutral-800 px-6 pt-6 flex items-center justify-between">
+        <div className="sticky top-0 px-6 pt-6 flex items-center justify-between">
           <h2 className="font-semibold">{drink.name}</h2>
           <button
             onClick={onClose}
             className="cursor-pointer text-stone-400 hover:text-stone-50"
+            aria-label="Cerrar ventana"
           >
             <X size={20} strokeWidth={2} />
           </button>
@@ -74,8 +76,8 @@ export function DrinkSelector({
                 onClick={() => setSelectedSize(variant.size)}
                 className={`w-full px-3 py-2 rounded-lg transition-all cursor-pointer ${
                   selectedSize === variant.size
-                    ? "bg-neutral-700 border-lime-400"
-                    : "border-neutral-800 hover:bg-neutral-700/50"
+                    ? "bg-neutral-700"
+                    : "hover:bg-neutral-700/50"
                 }`}
               >
                 <div className="flex items-center justify-between">
@@ -83,7 +85,7 @@ export function DrinkSelector({
                     <span className="text-sm font-semibold capitalize">
                       {variant.size}
                     </span>
-                    <span className="text-xs text-stone-50/70">
+                    <span className="text-xs text-stone-50/60">
                       {variant.volume}
                     </span>
                   </div>

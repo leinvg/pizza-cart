@@ -2,6 +2,7 @@
 
 import { Drink } from "@/types";
 import SafeImage from "@/components/SafeImage";
+import { Plus } from "lucide-react";
 
 interface DrinkCardProps {
   drink: Drink;
@@ -13,34 +14,24 @@ export function DrinkCard({ drink, onSelect }: DrinkCardProps) {
   const maxPrice = Math.max(...drink.variants.map((v) => v.price));
 
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-      <div className="relative h-48 w-full bg-gray-800 flex items-center justify-center">
+    <div className="rounded-2xl bg-neutral-700 shadow-md overflow-hidden hover:shadow-lg transition-shadow flex">
+      <div className="relative min-w-15 w-1/4">
         <SafeImage src={drink.variants[0].image} alt={drink.name} />
       </div>
-
-      <div className="p-4">
-        <h3 className="text-xl font-bold mb-2">{drink.name}</h3>
-
-        <div className="mb-3">
-          <p className="text-sm text-gray-500">
-            Tamaños: {drink.variants.map((v) => v.volume).join(", ")}
+      <div className="flex items-end p-4 gap-4 flex-1">
+        <div className="flex-1 h-full">
+          <h3 className="text-base/5 font-semibold mb-1">{drink.name}</h3>
+          <p className="text-sm text-stone-50/60">
+            {drink.variants.map((v) => v.volume).join(", ")}
           </p>
         </div>
-
-        <div className="flex items-center justify-between">
-          <div className="text-lg font-semibold text-blue-600">
-            {minPrice === maxPrice
-              ? `$${minPrice.toFixed(2)}`
-              : `$${minPrice.toFixed(2)} - $${maxPrice.toFixed(2)}`}
-          </div>
-
-          <button
-            onClick={() => onSelect(drink)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
-          >
-            Elegir
-          </button>
-        </div>
+        <button
+          onClick={() => onSelect(drink)}
+          className="bg-lime-400 hover:bg-lime-500 text-sm text-stone-950/80 font-semibold p-2 w-fit rounded-lg transition-colors cursor-pointer"
+          aria-label={`Ver tamaños de ${drink.name}`}
+        >
+          <Plus size={20} strokeWidth={2} />
+        </button>
       </div>
     </div>
   );
