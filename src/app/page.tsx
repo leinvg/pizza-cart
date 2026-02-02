@@ -121,7 +121,7 @@ export default function Home() {
             {/* Bebidas */}
             <section id="bebidas" className="scroll-mt-20">
               <h2 className="text-3xl font-bold mb-6 text-gray-800">Bebidas</h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {drinks.map((drink) => (
                   <DrinkCard
                     key={drink.id}

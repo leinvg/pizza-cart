@@ -18,7 +18,7 @@ export function DrinkCard({ drink, onSelect }: DrinkCardProps) {
       <div className="relative min-w-15 w-1/4">
         <SafeImage src={drink.variants[0].image} alt={drink.name} />
       </div>
-      <div className="flex items-end p-4 gap-4 flex-1">
+      <div className="flex items-end p-6 gap-6 flex-1">
         <div className="flex-1 h-full">
           <h3 className="text-base/5 font-semibold mb-1">{drink.name}</h3>
           <p className="text-sm text-stone-50/60">
